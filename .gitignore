@@ -1,0 +1,4 @@
+*.spvchain
+*.wallet
+logs/*.log
+.idea

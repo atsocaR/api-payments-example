@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${HOSTNAME} ${applicationId:-styx} %date %level [%thread] %logger{36} [%file:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/styx.log</file>
+        <append>true</append>
+        <prudent>true</prudent>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/styx.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${HOSTNAME} ${applicationId:-styx} %date %level [%thread] %logger{36} [%file:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="styx" level="INFO" />
+    <logger name="org.bitcoinj.core" level="WARN" />
+    <logger name="org.bitcoinj.wallet" level="WARN" />
+
+    <root level="info">
+        <appender-ref ref="FILE"></appender-ref>
+        <appender-ref ref="STDOUT"></appender-ref>
+    </root>
+</configuration>
