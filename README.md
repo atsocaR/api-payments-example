@@ -12,7 +12,9 @@ Because no signup is needed anymore this also allows machines to directly intera
 
 This example consists of two parts. A server that exposes an API endpoint (to get the current weather at a certain lat/lng), and a client that requests the API and if needed sends a Bitcoin transaction with the request. 
 
+### Sequence diagram
 
+![Sequence diagram](https://raw.githubusercontent.com/bumi/api-payments-example/master/sequence-explanation.png)
 
 ### Problems
 
