@@ -1,6 +1,7 @@
 ## Bitcoin based API payments
 
-This example shows how Bitcoin payments for API requests can be implemented
+This example shows how Bitcoin payments for API requests can be implemented. 
+Basically a computer program pays anothr program to use its data. 
 
 
 ## Idea
