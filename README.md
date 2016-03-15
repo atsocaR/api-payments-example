@@ -41,6 +41,7 @@ The server requires the following ENV variables to be set:
 * BITCOIN_NETWORK: org.bitcoin.regtest, org.bitcoin.testnet, org.bitcoin.production (defaults to org.bitcoin.regtest) 
 * WATCHING_KEY: the wallet watching key to generate recipient addresses
 * PRICE: the price per API call (defaults to 100000)
+* FORECASTIO_KEY: [forcast.io API key](https://developer.forecast.io/) for requesting weather data
 
 because ther server is only receiving money the wallet does not require to hold any funds. 
 
