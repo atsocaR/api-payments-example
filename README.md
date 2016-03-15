@@ -31,6 +31,8 @@ The client requests the endpoint. If the server responds with a HTTP 402 payment
 
 ## Setup
 
+I've simply run the server and the client from within my IntelliJ IDE.
+
 ### Server
 
 The server requires the following ENV variables to be set: 
