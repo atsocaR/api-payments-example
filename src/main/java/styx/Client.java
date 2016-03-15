@@ -30,20 +30,29 @@ public class Client {
         }
         logger.info("using network " + environment);
 
-        Client client = new Client(environment, "http://localhost:4567");
+        String url = System.getenv("SERVER_BASE_URL");
+        if (url == null) {
+            url = "http://localhost:4567";
+        }
+        Client client = new Client(environment, url);
 
         logger.info("send money to: " + client.wallet().currentReceiveAddress().toString());
 
+        if(client.wallet().getBalance().isZero()) {
+            logger.info("wallet balance is zero. please provide some funds and try again after the funding transaction is confirmed");
+        } else {
 
-        HttpRequest request = client.request("/api", "6.230833,-75.590556");
+            HttpRequest request = client.request("/api", "6.230833,-75.590556");
 
-        logger.info(request.body());
+            logger.info("request successful");
+            logger.info(request.body());
+        }
     }
 
     public Client(String environment, String host) throws Exception {
         this.host = host;
         this.params = NetworkParameters.fromID(environment);
-        this.kit = new WalletAppKit(params, new File("."), "styx-client-" + params.getPaymentProtocolId());
+        this.kit = new WalletAppKit(params, new File("."), "styx-clien-" + params.getPaymentProtocolId());
         kit.startAsync();
         kit.awaitRunning();
     }
