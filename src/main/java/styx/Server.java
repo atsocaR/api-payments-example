@@ -102,7 +102,6 @@ public class Server {
                 MultipartConfigElement multipartConfigElement = new MultipartConfigElement(System.getProperty("java.io.tmpdir"));
                 req.raw().setAttribute("org.eclipse.jetty.multipartConfig", multipartConfigElement);
             }
-            logger.info(req.contentType());
             if(req.contentType() == null || !req.contentType().contains("multipart")) {
                 res.status(422);
                 return "please send a multipart request";

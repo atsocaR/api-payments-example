@@ -2,3 +2,4 @@
 *.wallet
 logs/*.log
 .idea
+target/*

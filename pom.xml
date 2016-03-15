@@ -63,11 +63,11 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.4</version>
                 <configuration>
-                    <finalName>pfennig</finalName>
+                    <finalName>StyxServer</finalName>
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>pfennig.App</mainClass>
+                            <mainClass>styx.Server</mainClass>
                             <classpathPrefix>dependency-jars/</classpathPrefix>
                         </manifest>
                     </archive>
@@ -79,18 +79,37 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <executions>
                     <execution>
+                        <id>styxserver</id>
                         <goals>
                             <goal>attached</goal>
                         </goals>
                         <phase>package</phase>
                         <configuration>
-                            <finalName>pfennig</finalName>
+                            <finalName>StyxServer</finalName>
                             <descriptorRefs>
                                 <descriptorRef>jar-with-dependencies</descriptorRef>
                             </descriptorRefs>
                             <archive>
                                 <manifest>
-                                    <mainClass>pfennig.App</mainClass>
+                                    <mainClass>styx.Server</mainClass>
+                                </manifest>
+                            </archive>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>styxclient</id>
+                        <goals>
+                            <goal>attached</goal>
+                        </goals>
+                        <phase>package</phase>
+                        <configuration>
+                            <finalName>StyxClient</finalName>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                            <archive>
+                                <manifest>
+                                    <mainClass>styx.Client</mainClass>
                                 </manifest>
                             </archive>
                         </configuration>
