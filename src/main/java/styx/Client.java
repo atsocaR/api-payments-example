@@ -66,7 +66,7 @@ public class Client {
     }
 
     public static HttpRequest sendRequest(String url, String data, PaymentSession paymentSession, Wallet.SendRequest sendRequest, Address refundAddr, String memo) throws Exception {
-        logger.info("attaching payment");
+        logger.info("attaching payment - hash: " + sendRequest.tx.getHashAsString());
         logger.info("data: " + data);
         Protos.Payment payment = PaymentProtocol.createPaymentMessage(ImmutableList.of(sendRequest.tx), paymentSession.getValue(), refundAddr, memo, paymentSession.getMerchantData());
         HttpRequest request = HttpRequest.post(url);
