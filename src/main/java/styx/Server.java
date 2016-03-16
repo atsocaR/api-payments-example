@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spark.Request;
 import spark.Response;
+import spark.Spark;
 import spark.utils.IOUtils;
 
 import javax.servlet.MultipartConfigElement;
@@ -24,6 +25,7 @@ import java.util.List;
 import static spark.Spark.before;
 import static spark.Spark.get;
 import static spark.Spark.post;
+
 
 public class Server {
     public final static Logger logger = LoggerFactory.getLogger(Server.class.getName());
@@ -88,6 +90,11 @@ public class Server {
     }
 
     public void initApi() {
+
+        String port = System.getenv("PORT");
+        if (port != null) {
+            Spark.port(Integer.parseInt(port));
+        }
 
         before("/*", (request, response) -> {
             logger.info(request.requestMethod() + " " + request.pathInfo() + " ip=" + request.ip() + " real ip: " + request.headers("X-Real-IP"));
