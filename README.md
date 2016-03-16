@@ -50,6 +50,11 @@ The server requires the following ENV variables to be set:
 
 because ther server is only receiving money the wallet does not require to hold any funds. 
 
+#### Package a jar and run
+
+    $ mvn package
+    $ [ENV variables] java -jar target/StyxServer-jar-with-dependencies.jar
+
 ### Client
 
 The client can be configured with the following ENV variables:
@@ -59,10 +64,27 @@ The client can be configured with the following ENV variables:
 
 Because the client needs to sign transactions it requires a wallet WITH funds. The example creates a new wallet file and tells you the funding address. Please make sure that the funding transaction has some confirmation. 
 
+#### Package a jar and run
+
+    $ mvn package
+    $ [ENV variables] java -jar target/StyxClient-jar-with-dependencies.jar
+
+### Test it!
+
+I've deployed a server running in Testnet on [styx-api-demo.herokuapp.com](https://styx-api-demo.herokuapp.com).   
+You can test and play with it there. Write your own client (maybe in another language?) or configure the [Client](https://github.com/bumi/api-payments-example/blob/master/src/main/java/styx/Client.java) to use that server: `SERVER_BASE_URL=https://styx-api-demo.herokuapp.com` (note: no / at the end) and `BITCOIN_NETWORK=org.bitcoin.test`
+
+    $ mvn package && SERVER_BASE_URL=https://styx-api-demo.herokuapp.com BITCOIN_NETWORK=org.bitcoin.test java -jar target/StyxClient-jar-with-dependencies.jar
+
+Running this for the first time will create a new wallet for you and sync the blockchain (no worries it is a SPV wallet so the chain sync only takes a minute or two).  
+Then it will tell you to send some testnet(!) bitcoins to an address (look closely in the output as there is a lot of debug output).  
+Once done that and the transaction got confirmed run it again and it should give you the response from the server - a JSON string with the current weather of Medellín, Colombia (again maybe a bit hidden in the logs). (hint: it is probably nice weather in Medellín :D )
+
+If you do not have any testnet coins you can get some from here: [tpfaucet.appspot.com](https://tpfaucet.appspot.com) or [faucet.xeno-genesis.com](http://faucet.xeno-genesis.com).
 
 ## Have questions? What do you think? 
 
-I would love to hear your thoughts on this. 
+I would love to hear your thoughts on this. What are your ideas?
 
 ------------
 
