@@ -71,7 +71,7 @@ Because the client needs to sign transactions it requires a wallet WITH funds. T
 
 ### Test it!
 
-I've deployed a server running in Testnet on [styx-api-demo.herokuapp.com](https://styx-api-demo.herokuapp.com).   
+I've deployed a server running in Testnet on [styx-api-demo.herokuapp.com](https://styx-api-demo.herokuapp.com) (might be a bit slow because heroku has to boot).   
 You can test and play with it there. Write your own client (maybe in another language?) or configure the [Client](https://github.com/bumi/api-payments-example/blob/master/src/main/java/styx/Client.java) to use that server: `SERVER_BASE_URL=https://styx-api-demo.herokuapp.com` (note: no / at the end) and `BITCOIN_NETWORK=org.bitcoin.test`
 
     $ mvn package && SERVER_BASE_URL=https://styx-api-demo.herokuapp.com BITCOIN_NETWORK=org.bitcoin.test java -jar target/StyxClient-jar-with-dependencies.jar
