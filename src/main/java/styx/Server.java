@@ -52,7 +52,7 @@ public class Server {
             numPeers = 1;
         } else {
             peerGroup.addPeerDiscovery(new DnsDiscovery(params));
-            numPeers = 4;
+            numPeers = 2;
         }
 
         logger.info("connecting");
