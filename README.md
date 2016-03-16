@@ -77,8 +77,9 @@ You can test and play with it there. Write your own client (maybe in another lan
     $ mvn package && SERVER_BASE_URL=https://styx-api-demo.herokuapp.com BITCOIN_NETWORK=org.bitcoin.test java -jar target/StyxClient-jar-with-dependencies.jar
 
 Running this for the first time will create a new wallet for you and sync the blockchain (no worries it is a SPV wallet so the chain sync only takes a minute or two).  
-Then it will tell you to send some testnet(!) bitcoins to an address (look closely in the output as there is a lot of debug output).  
-Once done that and the transaction got confirmed run it again and it should give you the response from the server - a JSON string with the current weather of Medellín, Colombia (again maybe a bit hidden in the logs). (hint: it is probably nice weather in Medellín :D )
+Then it will tell you to send some testnet(!) bitcoins to an address (look closely in the output as there is a lot of debug output. look for lines starting with: `INFO styx.Client`).  
+Once done that and the transaction got confirmed run it again and it should give you the response from the server - a JSON string with the current weather of Medellín, Colombia (again maybe a bit hidden in the logs). (hint: it is probably nice weather in Medellín :D )  
+After a view seconds (might take a bit on the testnet) you should find the transaction (log for the transaction hash in the logs) in your favorit testnet block explore (z.B. [blockcypher](https://live.blockcypher.com/btc-testnet/)).
 
 If you do not have any testnet coins you can get some from here: [tpfaucet.appspot.com](https://tpfaucet.appspot.com) or [faucet.xeno-genesis.com](http://faucet.xeno-genesis.com).
 
