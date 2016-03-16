@@ -60,11 +60,14 @@ public class Client {
         return this.kit.wallet();
     }
     public HttpRequest request(String path, String data) throws Exception {
-        logger.info(this.host + path);
+        logger.info("requesting: " + this.host + path);
+        logger.info("data: " + data);
         return this.sendRequest(this.host + path, data);
     }
 
     public static HttpRequest sendRequest(String url, String data, PaymentSession paymentSession, Wallet.SendRequest sendRequest, Address refundAddr, String memo) throws Exception {
+        logger.info("attaching payment");
+        logger.info("data: " + data);
         Protos.Payment payment = PaymentProtocol.createPaymentMessage(ImmutableList.of(sendRequest.tx), paymentSession.getValue(), refundAddr, memo, paymentSession.getMerchantData());
         HttpRequest request = HttpRequest.post(url);
 
@@ -77,26 +80,27 @@ public class Client {
 
     private HttpRequest sendRequest(String url, String data) throws Exception {
         HttpRequest request = HttpRequest.post(url);
-        request.part("req", data);
+        request.part("request", data); // only the request part - for the demo no payment part for the first request
 
+        logger.info("server HTTP response code: " + request.code());
         if (request.code() == 402) {
             logger.info("payment required");
             Protos.PaymentRequest pr = Protos.PaymentRequest.parseFrom(request.stream());
             PaymentSession session = new PaymentSession(pr, true, null);
             if(session.isExpired()) {
-                logger.info("request expired.");
+                logger.info("oh, request expired. might be an error on the server.");
                 return null;
             } else {
-                logger.info("message from the server: " + session.getMemo());
-                logger.info("requested amount: " + session.getValue().toFriendlyString());
+                logger.info("server payment request memo: " + session.getMemo());
+                logger.info("server requested amount: " + session.getValue().toFriendlyString());
                 Wallet.SendRequest sendRequest = session.getSendRequest();
-                System.out.println(sendRequest.toString());
                 this.wallet().completeTx(sendRequest);  // may throw InsufficientMoneyException
 
                 logger.info("sending new request with payment");
                 request = sendRequest(url, data, session, sendRequest, null, null);
 
                 if(request.code() == 200) {
+                    logger.info("yay, request was accepted. And the server has published our transaction");
                     this.wallet().commitTx(sendRequest.tx);
                 }
                 return request;
