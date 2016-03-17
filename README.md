@@ -34,6 +34,7 @@ If the server accepts the payment and if it can fulfill the request it broadcast
 
 The client requests the endpoint. If the server responds with a HTTP 402 payment required status code it parses the payment request, creates a transactions and resends the request along with the payment. 
 
+([Here](http://share-michaelbumann-com.s3-website-eu-west-1.amazonaws.com/screenshots/styx-api-example-request-debug.jpg) is a [dump of the client request](http://share-michaelbumann-com.s3-website-eu-west-1.amazonaws.com/screenshots/styx-api-example-request-debug.jpg) including the payment.)
 
 ## Setup
 
@@ -82,6 +83,8 @@ Once done that and the transaction got confirmed run it again and it should give
 After a view seconds (might take a bit on the testnet) you should find the transaction (log for the transaction hash in the logs) in your favorit testnet block explore (maybe [blockcypher](https://live.blockcypher.com/btc-testnet/)).
 
 If you do not have any testnet coins you can get some from here: [tpfaucet.appspot.com](https://tpfaucet.appspot.com) or [faucet.xeno-genesis.com](http://faucet.xeno-genesis.com).
+
+[Here](http://share-michaelbumann-com.s3-website-eu-west-1.amazonaws.com/screenshots/styx-api-example-request-debug.jpg) is a request.bin [dump of the client request](http://share-michaelbumann-com.s3-website-eu-west-1.amazonaws.com/screenshots/styx-api-example-request-debug.jpg) to the server including the payment.
 
 ## Have questions? What do you think? 
 
