@@ -18,7 +18,7 @@ This example consists of two parts. A server that exposes an API endpoint (to ge
 
 ### Problems
 
-Each Bitcoin transaction has some costs to it. Depending on the kind of API this might be to high. One solution for this might be the usage of [micro-channel transaction](https://bitcoinj.github.io/working-with-micropayments). 
+Each Bitcoin transaction has some costs to it. Depending on the kind of API this is probably to high. One solution for this is the use of [micro-channel transaction](https://bitcoinj.github.io/working-with-micropayments). 
 If time allows and if you are interested I might add an example for that some time. 
 
 Request overhead. There is an additional overhead for validating and publishing the transaction which probably causes a bit slower respones times.
