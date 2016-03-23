@@ -90,6 +90,9 @@ If you do not have any testnet coins you can get some from here: [tpfaucet.appsp
 
 I would love to hear your thoughts on this. What are your ideas?
 
+follow the [related blog post](http://michaelbumann.com/post/141356263577/experimenting-with-bitcoin-machine-to-machine)
+
+
 ------------
 
 Contact: hello@michaelbumann.com  
